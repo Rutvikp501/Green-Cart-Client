@@ -1,0 +1,92 @@
+@import "../../css-config/mixins.scss";
+.hero-banner {
+    padding: 40px 0 50px 0;
+    position: relative;
+    background-image: linear-gradient(to right, #2de265, #a2ff28);
+    @include md {
+        height: calc(100vh - 80px);
+        padding: 40px 0 20px 0;
+    }
+    .content {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column-reverse;
+        margin: 0 auto;
+        position: relative;
+        z-index: 0;
+        @include lg {
+            flex-direction: row;
+            max-width: 1200px;
+        }
+        .banner-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 300px;
+            width: 300px;
+            margin-bottom: 20px;
+            @include md {
+                height: calc(100vh + 10px);
+                width: 570px;
+            }
+            @include lg {
+                width: 700px;
+            margin-top: 50px;
+            }
+        }
+        .text-content {
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1 {
+                font-size: 80px;
+                font-weight: 700;
+                line-height: 1;
+                color: white;
+                margin-bottom: 20px;
+                @include md {
+                    font-size: 100px;
+                }
+            }
+            p {
+                max-width: 300px;
+                font-size: 14px;
+                line-height: 20px;
+                margin-bottom: 20px;
+                @include md {
+                    max-width: 500px;
+                    font-size: 18px;
+                    line-height: 24px;
+                    margin-bottom: 40px;
+                }
+            }
+            .ctas {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                .banner-cta {
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    font-weight: 500;
+                    width: fit-content;
+                    border: 2px solid white;
+                    padding: 10px 20px;
+                    transition: all ease 0.3s;
+                    cursor: pointer;
+                    &.v2 {
+                        background-color: white;
+                        color: black;
+                    }
+                    &:hover {
+                        opacity: 0.6;
+                    }
+                }
+            }
+        }
+    }
+}

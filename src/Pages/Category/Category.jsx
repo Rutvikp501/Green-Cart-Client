@@ -1,0 +1,271 @@
+import "./Category.scss";
+import {
+  Button,
+  Checkbox,
+  Flex,
+  Hide,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  Stack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import LottieAnimation from "../../Components/LottiesFile/LottieAnimation";
+import Products from "../../Components/Products/Products";
+import { getProducts } from "../../API/APICalls";
+import { BiFilterAlt } from "react-icons/bi";
+const Category = () => {
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const { products, isLoading } = useSelector(({products}) => products || {});
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCategory = searchParams.getAll("category");
+  const initialPrice = searchParams.getAll("price");
+  const [category, setcategory] = useState(initialCategory || []);
+  const [price, setprice] = useState(initialPrice || []);
+  const handleFilterChange = (e) => {
+    const newcategory = [...category];
+    if (newcategory.includes(e.target.value)) {
+      newcategory.splice(newcategory.indexOf(e.target.value), 1);
+    } else {
+      newcategory.push(e.target.value);
+    }
+    setcategory(newcategory);
+  };
+  const handleFilterPrice = (e) => {
+    const newprice = [...price];
+    if (newprice.includes(e.target.value)) {
+      newprice.splice(newprice.indexOf(e.target.value), 1);
+    } else {
+      newprice.push(e.target.value);
+    }
+    setprice(newprice);
+  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    let params = {};
+    params.category = category;
+    params.price = price;
+    setSearchParams(params);
+    dispatch(getProducts(params));
+  }, [category, setSearchParams, price]);
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return (
+    <div className="category-main-content">
+      <Hide above="md">
+        <Flex justifyContent={"flex-end"}>
+          <Flex>
+            <Popover>
+              <PopoverTrigger>
+                <Button
+                  variant="outline"
+                  colorScheme="gray"
+                  mr="1rem"
+                  mb="1rem"
+                >
+                  <BiFilterAlt />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader>Category</PopoverHeader>
+                <PopoverBody>
+                  <Stack spacing={[2]} direction="column">
+                    <Checkbox
+                      onChange={handleFilterChange}
+                      isChecked={category.includes("Vegitable")}
+                      value="Vegitable"
+                    >
+                      Vegitable
+                    </Checkbox>
+                    <Checkbox
+                      onChange={handleFilterChange}
+                      isChecked={category.includes("Fruite")}
+                      value="Fruite"
+                    >
+                      Fruite
+                    </Checkbox>
+                    <Checkbox
+                      onChange={handleFilterChange}
+                      isChecked={category.includes("Spices_Herbs")}
+                      value="Spices_Herbs"
+                    >
+                      Spices & Herbs
+                    </Checkbox>
+                    <Checkbox
+                      onChange={handleFilterChange}
+                      isChecked={category.includes("Green_Leaves")}
+                      value="Green_Leaves"
+                    >
+                      Green Leaves
+                    </Checkbox>
+
+                <Checkbox
+                  onChange={handleFilterChange}
+                  isChecked={category.includes("Dairy_Products")}
+                  value="Dairy_Products"
+                >
+                  Dairy  Products
+                </Checkbox>
+                <Checkbox
+                  onChange={handleFilterChange}
+                  isChecked={category.includes("Egg_Meats")}
+                  value="Egg_Meats"
+                >
+                  Egg & Meats
+                </Checkbox>
+                  </Stack>
+                </PopoverBody>
+                {/* <PopoverHeader>Price</PopoverHeader>
+                <PopoverBody>
+                  <Stack spacing={[2]} direction="column">
+                    <Checkbox
+                      onChange={handleFilterPrice}
+                      isChecked={price.includes("1000-2999")}
+                      value="1000-2999"
+                    >
+                      1000 - 2999
+                    </Checkbox>
+                    <Checkbox
+                      onChange={handleFilterPrice}
+                      isChecked={price.includes("3000-4999")}
+                      value="3000-4999"
+                    >
+                      3000 - 4999
+                    </Checkbox>
+                    <Checkbox
+                      onChange={handleFilterPrice}
+                      isChecked={price.includes("5000")}
+                      value="5000"
+                    >
+                      5000+
+                    </Checkbox>
+                  </Stack>
+                </PopoverBody> */}
+              </PopoverContent>
+            </Popover>
+          </Flex>
+        </Flex>
+      </Hide>
+      <div className="productContent">
+        <Hide below="md">
+          <VStack
+            height="fit-content"
+            bg="#2de265"
+            borderRadius={"0px 15px 15px 0px"}
+            minW="20%"
+            justifyContent="flex-start"
+            p="0.5rem"
+          >
+            <VStack
+              bg="white"
+              color="black"
+              w="100%"
+              borderRadius="10px"
+              p="0.8rem"
+            >
+              <Text fontSize="2xl" as="b">
+                Category
+              </Text>
+              <Stack spacing={[2]} direction="column">
+                <Checkbox
+                  onChange={handleFilterChange}
+                  isChecked={category.includes("Vegitable")}
+                  value="Vegitable"
+                >
+                  Vegitable
+                </Checkbox>
+                <Checkbox
+                  onChange={handleFilterChange}
+                  isChecked={category.includes("Fruite")}
+                  value="Fruite"
+                >
+                  Fruite
+                </Checkbox>
+                <Checkbox
+                  onChange={handleFilterChange}
+                  isChecked={category.includes("Spices _Herbs")}
+                  value="Spices _Herbs"
+                >
+                  Spices & Herbs
+                </Checkbox>
+                <Checkbox
+                  onChange={handleFilterChange}
+                  isChecked={category.includes("Green _Leaves")}
+                  value="Green _Leaves"
+                >
+                  Green Leaves
+                </Checkbox>
+                <Checkbox
+                  onChange={handleFilterChange}
+                  isChecked={category.includes("Dairy_Products")}
+                  value="Dairy_Products"
+                >
+                  Dairy  Products
+                </Checkbox>
+                <Checkbox
+                  onChange={handleFilterChange}
+                  isChecked={category.includes("Egg_Meats")}
+                  value="Egg_Meats"
+                >
+                  Egg & Meats
+                </Checkbox>
+              </Stack>
+            </VStack>
+            {/* <VStack
+              bg="white"
+              color="black"
+              w="100%"
+              borderRadius="10px"
+              p="0.8rem"
+            >
+              <Text fontSize="2xl" as="b">
+                Price
+              </Text>
+              <Stack spacing={[2]} direction="column">
+                <Checkbox
+                  onChange={handleFilterPrice}
+                  isChecked={price.includes("1000-2999")}
+                  value="1000-2999"
+                >
+                  1000 - 2999
+                </Checkbox>
+                <Checkbox
+                  onChange={handleFilterPrice}
+                  isChecked={price.includes("3000-4999")}
+                  value="3000-4999"
+                >
+                  3000 - 4999
+                </Checkbox>
+                <Checkbox
+                  onChange={handleFilterPrice}
+                  isChecked={price.includes("5000")}
+                  value="5000"
+                >
+                  5000+
+                </Checkbox>
+              </Stack>
+            </VStack> */}
+          </VStack>
+        </Hide>
+        {isLoading ? <LottieAnimation /> : <Products productData={products} />}
+      </div>
+    </div>
+  );
+};
+
+export default Category;
