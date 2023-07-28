@@ -2,7 +2,8 @@
 import axios from 'axios'
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-const REACT_APP_BACKENDAPI="http://127.0.0.1:8080/"
+const REACT_APP_BACKENDAPI= process.env.REACT_APP_BACKENDAPI
+
 
 export const getCategoryItems = createAsyncThunk('category/getCategoryItems', async() => {
     try {
