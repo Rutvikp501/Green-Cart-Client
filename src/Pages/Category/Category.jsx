@@ -113,21 +113,34 @@ const Category = () => {
                     >
                       Green Leaves
                     </Checkbox>
-
+                    <Checkbox
+                      onChange={handleFilterChange}
+                     isChecked={category.includes("Dairy_Products")}
+                     value="Dairy_Products"
+                     >
+                     Dairy  Products
+                    </Checkbox>
+                    <Checkbox
+                      onChange={handleFilterChange}
+                      isChecked={category.includes("Egg_Meats")}
+                      value="Egg_Meats"
+                     >
+                      Egg & Meats
+                    </Checkbox>  {
+                    category?.map((item,index)=>(
+                //         <div key={index} className="category" onClick={()=>{navigateFn(item)}}>
+                //     <img src={item.image.url} alt="" />
+                // </div>
                 <Checkbox
-                  onChange={handleFilterChange}
-                  isChecked={category.includes("Dairy_Products")}
-                  value="Dairy_Products"
-                >
-                  Dairy  Products
-                </Checkbox>
-                <Checkbox
-                  onChange={handleFilterChange}
-                  isChecked={category.includes("Egg_Meats")}
-                  value="Egg_Meats"
-                >
-                  Egg & Meats
-                </Checkbox>
+                key={index}
+                onChange={handleFilterChange}
+                isChecked={category.includes({category})}
+                value={category}
+               >
+                {category}
+              </Checkbox>
+                    ))
+                }
                   </Stack>
                 </PopoverBody>
                 {/* <PopoverHeader>Price</PopoverHeader>
