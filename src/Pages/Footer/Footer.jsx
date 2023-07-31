@@ -8,11 +8,11 @@ const Footer = () => {
         <div className="col">
           <div className="title">About</div>
           <div className="text">
-Welcome to Green cart your one-stop destination for fresh,
+Welcome to Desi Greens your one-stop destination for fresh,
  high-quality groceries. Shop online for a diverse range of farm-fresh produce, 
  premium meats, and pantry essentials. Enjoy the convenience of home delivery or opt
   for hassle-free in-store pickup. Our dedicated support team is here to assist you.
- Experience the joy of cooking with the finest ingredients from Green Cart. Happy shopping!
+ Experience the joy of cooking with the finest ingredients from Desi Greens. Happy shopping!
           </div>
         </div>
         <div className="col">

@@ -92,7 +92,7 @@ const Header = () => {
             <li onClick={navigateFnButton}>Categories</li>
           </ul>
           <div className="center" onClick={navigateFn}>
-            GreenCart
+          Desi Greens
           </div>
           <div className="right">
             <div>

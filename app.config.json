@@ -1,7 +1,7 @@
 {
     "apps" : [
       {
-        "name"      : "Green-Cart",
+        "name"      : "Desi Greens",
         "script"    : "npx",
         "interpreter": "none",
         "args": "serve -s build -p 3002"
