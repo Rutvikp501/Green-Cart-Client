@@ -34,7 +34,7 @@ Welcome to Desi Greens your one-stop destination for fresh,
         </div>
         <div className="col">
           <div className="title">Vegitables</div>
-          <span className="text">Fruite</span>
+          <span className="text">Fruits</span>
           <span className="text">Spices & Herbs</span>
           <span className="text">Green Leaves</span>
           <span className="text">Deary Products</span>

@@ -57,6 +57,7 @@ const Category = () => {
     params.category = category;
     params.price = price;
     setSearchParams(params);
+    console.log(category);
     dispatch(getProducts(params));
   }, [category, setSearchParams, price]);
   useLayoutEffect(() => {
@@ -94,10 +95,10 @@ const Category = () => {
                     </Checkbox>
                     <Checkbox
                       onChange={handleFilterChange}
-                      isChecked={category.includes("Fruite")}
-                      value="Fruite"
+                      isChecked={category.includes("Fruits")}
+                      value="Fruits"
                     >
-                      Fruite
+                      Fruits
                     </Checkbox>
                     <Checkbox
                       onChange={handleFilterChange}
@@ -204,22 +205,22 @@ const Category = () => {
                 </Checkbox>
                 <Checkbox
                   onChange={handleFilterChange}
-                  isChecked={category.includes("Fruite")}
-                  value="Fruite"
+                  isChecked={category.includes("Fruits")}
+                  value="Fruits"
                 >
-                  Fruite
+                  Fruits
                 </Checkbox>
                 <Checkbox
                   onChange={handleFilterChange}
-                  isChecked={category.includes("Spices _Herbs")}
-                  value="Spices _Herbs"
+                  isChecked={category.includes("Spices_Herbs")}
+                  value="Spices_Herbs"
                 >
                   Spices & Herbs
                 </Checkbox>
                 <Checkbox
                   onChange={handleFilterChange}
-                  isChecked={category.includes("Green _Leaves")}
-                  value="Green _Leaves"
+                  isChecked={category.includes("Green_Leaves")}
+                  value="Green_Leaves"
                 >
                   Green Leaves
                 </Checkbox>

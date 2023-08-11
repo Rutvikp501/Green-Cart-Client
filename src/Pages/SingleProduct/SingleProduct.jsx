@@ -29,7 +29,7 @@ const SingleProduct = () => {
     }
   }
   const {id} = useParams()
-  const { pathname,location } = useLocation();
+  const { pathname } = useLocation();
   const [product, setProduct] = useState(null);
   const {products,isLoading} = useSelector((store)=>store.products) || []
   const addToCartFn = useCallback(() => {
@@ -49,13 +49,13 @@ const SingleProduct = () => {
       .catch(error => {
         console.error(error);
       });
-  }, [location]);
+  }, [pathname]);
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [location]);
   return (
     <div className="single-product-main-content">
       <div className="layout">
