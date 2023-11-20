@@ -11,7 +11,7 @@ const Banner = () => {
          <div className="hero-banner"  id='#home'>
             <div className="content">
                 <div className="text-content">
-                    <h1>EXPLORE</h1>
+                    <h1>Taste the Farm</h1>
                     <p>From farm to table, we deliver the finest ingredients to satisfy your culinary cravings.
                     </p>
                     <div className="ctas">
